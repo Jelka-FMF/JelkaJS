@@ -1,0 +1,17 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "sourceMaps": true,
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "decoratorsBeforeExport": true
+    },
+    "baseUrl": "./",
+    "target": "es2020"
+  },
+  "module": {
+    "type": "nodenext",
+    "resolveFully": true
+  }
+}

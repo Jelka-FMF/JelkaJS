@@ -1,0 +1,23 @@
+{
+  "include": [
+    "src"
+  ],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "rootDir": "src",
+    "outDir": "_dist"
+  }
+}
