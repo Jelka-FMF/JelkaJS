@@ -12,6 +12,20 @@ export enum Relation {
   Less = '<',
 }
 
+/////////////////
+// Bound Types //
+/////////////////
+
+/**
+ * Represents a bound of a value.
+ *
+ * @category Types.Bound
+ */
+export enum Bound {
+  Min = 'min',
+  Max = 'max',
+}
+
 ////////////////////
 // Position Types //
 ////////////////////

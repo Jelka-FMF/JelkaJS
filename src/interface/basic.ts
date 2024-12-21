@@ -22,7 +22,7 @@ export function getFrameRate(): number {
 }
 
 /**
- * Callback for the `onFrame` function.
+ * Callback for the {@link onFrame} function.
  *
  * This callback is called for each frame. It receives the current
  * frame number and the time since the start of the pattern.

@@ -1,5 +1,5 @@
 import { STATE } from '../state'
-import { Axis, InternalColor, Relation } from '../types'
+import { Axis, Bound, InternalColor, Relation } from '../types'
 
 /**
  * Sets lights to the specified color.
@@ -157,4 +157,22 @@ export function lightsWhere(axis: Axis, relation: Relation, value: number, light
         return getCoordinate(axis, light) < value
     }
   })
+}
+
+/**
+ * Gets the minimum/maximum value of the specified axis.
+ *
+ * @param axis The axis to get the value of.
+ * @param bound Whether to get the minimum or maximum value.
+ * @param lights The list of lights to get the value of.
+ *
+ * @returns The minimum/maximum value of the specified axis.
+ */
+export function lightsBound(axis: Axis, bound: Bound, lights: number[]): number {
+  switch (bound) {
+    case Bound.Min:
+      return Math.min(...getCoordinates(axis, lights))
+    case Bound.Max:
+      return Math.max(...getCoordinates(axis, lights))
+  }
 }
