@@ -31,7 +31,10 @@ export function randomColor(): InternalColor {
  * @returns The RGB color, as an internal color.
  */
 export function rgbColor(red: number, green: number, blue: number): InternalColor {
-  return { red: red, green: green, blue: blue }
+  red = Math.max(0, Math.min(255, red))
+  green = Math.max(0, Math.min(255, green))
+  blue = Math.max(0, Math.min(255, blue))
+  return { red, green, blue }
 }
 
 /**
