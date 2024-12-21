@@ -43,9 +43,15 @@ export function writeHeader({ numberOfLights, frameRate }: JelkaHeader): void {
 export function writeFrame(colors: InternalColor[]): void {
   const frame = colors
     .map(({ red, green, blue }) => {
-      const r = red.toString(16).padStart(2, '0')
-      const g = green.toString(16).padStart(2, '0')
-      const b = blue.toString(16).padStart(2, '0')
+      const r = Math.max(0, Math.min(255, Math.round(red)))
+        .toString(16)
+        .padStart(2, '0')
+      const g = Math.max(0, Math.min(255, Math.round(green)))
+        .toString(16)
+        .padStart(2, '0')
+      const b = Math.max(0, Math.min(255, Math.round(blue)))
+        .toString(16)
+        .padStart(2, '0')
       return `${r}${g}${b}`
     })
     .join('')
