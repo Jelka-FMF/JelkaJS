@@ -59,13 +59,14 @@ export function onFrame(handler: OnFrameCallback): void {
 
       const frameEnd = performance.now()
       const frameDuration = frameEnd - frameStart
+      const targetDuration = 1000 / STATE.frameRate
 
-      const timeToWait = 1000 / STATE.frameRate - frameDuration
+      const timeToWait = targetDuration - frameDuration
 
       // Wait if necessary to keep the frame rate
       if (timeToWait < 0) {
-        process.stderr.write('[LIBRARY] Warning: Cannot keep up with the frame rate.\n')
-        process.stderr.write(`[LIBRARY] Frame time: ${frameDuration}, Max frame time: ${1000 / STATE.frameRate}\n`)
+        process.stderr.write(`[LIBRARY] Warning: Cannot keep up with the frame rate during the frame ${frameNumber}.\n`)
+        process.stderr.write(`[LIBRARY] Frame time: ${frameDuration} ms, Max frame time: ${targetDuration} ms\n`)
       } else if (timeToWait > 0) {
         await new Promise(resolve => setTimeout(resolve, timeToWait))
       }
