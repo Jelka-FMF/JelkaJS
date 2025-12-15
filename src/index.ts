@@ -72,6 +72,11 @@ export function initializeJelka({
     `${path.dirname(process.argv[1])}/../../data/positions.csv`,
   ]
 
+  // Allow overriding positions file via environment variable
+  if (process.env.JELKA_POSITIONS) {
+    filenames = [process.env.JELKA_POSITIONS]
+  }
+
   // Allow specifying a custom position filename
   if (positionFilename) {
     filenames = [positionFilename]
