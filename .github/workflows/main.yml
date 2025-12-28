@@ -1,4 +1,4 @@
-name: Publish Package
+name: CI/CD
 
 on:
   - push
