@@ -2,7 +2,7 @@
   "name": "jelka",
   "description": "JavaScript API for Jelka FMF patterns",
   "license": "MIT",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "homepage": "https://github.com/Jelka-FMF/JelkaJS",
   "repository": "https://github.com/Jelka-FMF/JelkaJS",
   "bugs": "https://github.com/Jelka-FMF/JelkaJS",
