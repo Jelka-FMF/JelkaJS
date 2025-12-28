@@ -91,12 +91,16 @@ export function initializeJelka({
   // Normalize the positions
   const normalizedPositions = normalizePositions(rawPositions, positionNormalization)
 
+  // Get the indices of lights
+  const indicesOfLights = Object.keys(normalizedPositions).map(Number)
+
   // Get the number of lights
-  const numberOfLights = Math.max(...Object.keys(normalizedPositions).map(Number)) + 1
+  const numberOfLights = Math.max(...indicesOfLights) + 1
 
   // Set the initial state
   STATE.frameRate = initialFrameRate ?? 50
   STATE.numberOfLights = numberOfLights
+  STATE.indicesOfLights = indicesOfLights
   STATE.rawPositions = rawPositions
   STATE.normalizedPositions = normalizedPositions
 

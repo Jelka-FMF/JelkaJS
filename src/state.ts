@@ -20,6 +20,11 @@ export interface JelkaState {
   numberOfLights: number
 
   /**
+   * The indices of lights on the tree.
+   */
+  indicesOfLights: number[]
+
+  /**
    * The raw positions of the lights.
    */
   rawPositions: Record<number, Position>
@@ -52,6 +57,7 @@ export const STATE: JelkaState = {
   // Start with all lights turned off
   colorStates: [],
 
-  // We do not know the number of lights yet
+  // We do not know the number and indices of lights yet
   numberOfLights: -1,
+  indicesOfLights: [],
 }

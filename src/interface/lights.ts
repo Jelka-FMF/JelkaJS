@@ -26,7 +26,7 @@ export function setLights(lights: number | number[], color: InternalColor): void
  */
 export function resetLights(lights?: number | number[]): void {
   // Default to all lights
-  if (lights === undefined) lights = Array.from({ length: STATE.numberOfLights }, (_, i) => i)
+  lights ??= Array.from({ length: STATE.numberOfLights }, (_, i) => i)
 
   // Handle a single light case
   if (typeof lights === 'number') lights = [lights]
@@ -117,7 +117,7 @@ export function getCoordinate(axis: Axis, light: number): number {
  * @returns The list of lights.
  */
 export function getLights(): number[] {
-  return Array.from({ length: STATE.numberOfLights }, (_, i) => i)
+  return STATE.indicesOfLights.slice()
 }
 
 /**
@@ -144,11 +144,13 @@ export function randomLight(): number {
  * @param axis The axis to check.
  * @param relation The relation to check.
  * @param value The value to compare against.
- * @param lights The list of lights to check.
+ * @param [lights] The list of lights to check. Defaults to all lights.
  *
  * @returns The lights that meet the specified relation.
  */
-export function lightsWhere(axis: Axis, relation: Relation, value: number, lights: number[]): number[] {
+export function lightsWhere(axis: Axis, relation: Relation, value: number, lights?: number[]): number[] {
+  lights ??= STATE.indicesOfLights
+
   return lights.filter(light => {
     switch (relation) {
       case Relation.Greater:
@@ -164,11 +166,13 @@ export function lightsWhere(axis: Axis, relation: Relation, value: number, light
  *
  * @param axis The axis to get the value of.
  * @param bound Whether to get the minimum or maximum value.
- * @param lights The list of lights to get the value of.
+ * @param [lights] The list of lights to get the value of. Defaults to all lights.
  *
  * @returns The minimum/maximum value of the specified axis.
  */
-export function lightsBound(axis: Axis, bound: Bound, lights: number[]): number {
+export function lightsBound(axis: Axis, bound: Bound, lights?: number[]): number {
+  lights ??= STATE.indicesOfLights
+
   switch (bound) {
     case Bound.Min:
       return Math.min(...getCoordinates(axis, lights))
